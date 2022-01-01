@@ -1,0 +1,16 @@
+{
+    "name": "KryptoTyms",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description":"KryptoTyms is a Chrome extension app that help you to get the lattest values of crypto currency",
+    "permissions": ["http://*/*", "https://*/*"],
+    "icons": {
+        "64": "icon60.png",
+        "128": "icon120.png"
+    },
+    "browser_action": {
+        "default_popup": "screen.html",
+        "default_logo": "icon120.png"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.nomics.com; object-src 'self'"
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        /*width: 100%;
+        height: 100vh;*/
+
+        width: 450px;
+        height: 500px;
+
+        background-image: linear-gradient(to right, white, rgba(145, 208, 245, 0.452));
+        /*border: 1px solid black;*/
+
+        /*........dark them.........*/
+        /*background-image: linear-gradient(to right,#06070d,#06070d);*/
+    }
+    /*.........................PRE-LOADER..........................*/
+    .pre-loader{
+        width: 100%;
+        height: 93%;
+        display: none;
+    }
+    .pre-loader>img{
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /*..........................PRICE-CHART(MAIN)..................*/
+    
+    .main{
+        width: 100%;
+        height: 93%;
+        overflow-y: scroll;
+
+    /*...................change the display value..................*/
+        /*display: block;*/
+    }
+
+    .main::-webkit-scrollbar {
+        display: none;
+    }
+
+    .heading {
+        font-weight: bold;
+        color: rgb(104, 101, 101);
+        background-image: linear-gradient(to right, white, rgb(111, 185, 207));
+
+        /*........dark them............*/
+        background-image: linear-gradient(to right, #292f34, #292f34);
+        color: rgb(197, 194, 194);
+    }
+
+    .heading,
+    .info {
+        width: 100%;
+        height: 9%;
+        font-size: 0.8rem;
+        /*...................change the display none/flex.................*/
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        
+        /*border: 1px solid red;*/
+        margin: auto;
+        transition: .2s;
+
+        /*........dark them............*/
+        background-color: #292f34;
+
+    }
+
+    .info {
+        /*height: 10% !important;*/
+        font-size: 0.9rem !important;
+        margin-top: .5%;
+        color: rgb(71, 67, 67);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /*border: 1px solid black;*/
+
+        background-color: #3c454dec;
+    }
+
+    .info>.inheading,
+    .info>.indetail {
+        display: none;
+    }
+
+    .heading>div,
+    .info>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        width: 28%;
+        /*height: 70%;*/
+        height: 90%;
+        /*border: 1px solid white;*/
+        font-weight: bold;
+        overflow-y: hidden;
+        overflow-x: scroll;
+
+        /*........dark them.........*/
+        color: rgb(197, 194, 194);
+    }
+
+    .heading>div::-webkit-scrollbar,
+    .info>div::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lo-h,
+    .lo {
+        width: 5% !important;
+        /*height: 60% !important;*/
+        height: auto !important;
+    }
+
+    .lo>img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .price-h,
+    .price {
+        justify-content: flex-start !important;
+        overflow-x: scroll;
+    }
+
+    .name-h,
+    .name {
+        width: 25% !important;
+        justify-content: flex-start !important;
+        padding-left: 0.5%;
+        margin-right: 3%;
+    }
+
+    #refresh{
+        width: 100%;
+        height: 10%;
+        font-size: 1.4rem;
+        font-family: sans-serif;
+        background-color: rgb(17, 187, 187);
+        color: rgba(16, 16, 17, 0.781);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-weight: bold;
+    }
+
+</style>
+
+<body>
+
+    <div class="heading">
+        <div class="lo-h"></div>
+        <div class="name-h"> Name</div>
+
+        <div class="price-h">Price</div>
+        <div class="prc-chpt-h">Price Change (1D)</div>
+        
+    </div>
+
+    <div class="pre-loader">
+        <img src="pre-loader.gif" alt="">
+    </div>
+
+    <div class="main">
+
+        <!-- <div class="info">
+
+            <div class="inheading">
+                <div class="i-lo-h"></div>
+                <div class="i-name-h"> Name</div>
+
+                <div class="i-price-h">Price</div>
+                <div class="i-prc-chpt-h">1d Price Change</div>
+                <div class="i-vol-chpt-h">1d volume change %</div>
+                <div class="i-mar-cap-ch-h">market cap change %</div>
+            </div>
+
+            <div class="indetail">
+                <div class="i-lo">
+                    <img src="" alt="">
+                </div>
+                <div class="i-name"> Name</div>
+
+                <div class="i-price">Price</div>
+                <div class="i-prc-chpt">1d Price </div>
+                <div class="i-vol-chpt">1d volume </div>
+                <div class="i-mar-cap-ch">market cap </div>
+            </div>
+
+            <div class="lo">
+                <img src="" alt="">
+            </div>
+            <div class="name"> Name</div>
+
+            <div class="price">Price</div>
+            <div class="prc-chpt">1d Price </div>
+            <div class="vol-chpt">1d volume </div>
+            <div class="mar-cap-ch">market cap </div>
+        </div> -->
+
+    </div>
+
+    <!-- <button id="refresh" onclick="getData()">Refresh <i class="fas fa-redo-alt"></i></button> -->
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
